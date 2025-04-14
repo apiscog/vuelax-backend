@@ -31,4 +31,29 @@ public class FlightOptionController {
         List<FlightOptionDTO> flights = flightOptionService.getAllFlights();
         return new ResponseEntity<>(flights, HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<FlightOptionDTO> getFlightOptionById(@PathVariable Long id) {
+        FlightOptionDTO flightOptionDTO = flightOptionService.getFlightOptionById(id);
+        return ResponseEntity.ok(flightOptionDTO);
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<FlightOptionDTO> updateFlightOption(
+            @PathVariable Long id,
+            @RequestBody FlightOptionDTO flightOptionDTO) {
+
+        try {
+            FlightOptionDTO updatedFlightOption = flightOptionService.updateFlightOption(id, flightOptionDTO);
+            return new ResponseEntity<>(updatedFlightOption, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteFlightOptionById(@PathVariable Long id) {
+        flightOptionService.deleteFlightOptionById(id);
+        return ResponseEntity.noContent().build();
+    }
 }

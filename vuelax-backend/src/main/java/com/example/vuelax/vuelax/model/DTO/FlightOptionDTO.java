@@ -12,6 +12,9 @@ public class FlightOptionDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("id")
+    private Long id;  // Agregar el campo id
+
     @JsonProperty("origin")
     private String origin;
 
@@ -26,6 +29,14 @@ public class FlightOptionDTO implements Serializable {
 
     @JsonProperty("price")
     private double price;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getOrigin() {
         return origin;
@@ -70,7 +81,8 @@ public class FlightOptionDTO implements Serializable {
     @Override
     public String toString() {
         return "FlightOptionDTO{" +
-                "origin='" + origin + '\'' +
+                "id=" + id + // Incluir el id en el toString
+                ", origin='" + origin + '\'' +
                 ", destination='" + destination + '\'' +
                 ", departureTime=" + departureTime +
                 ", arrivalTime=" + arrivalTime +

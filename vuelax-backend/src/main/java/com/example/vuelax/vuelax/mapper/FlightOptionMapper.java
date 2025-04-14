@@ -9,6 +9,7 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = Constants.SPRING)
 public interface FlightOptionMapper {
+    @Mapping(source = "id", target = "id")
     @Mapping(source = "origin", target = "origin")
     @Mapping(source = "destination", target = "destination")
     @Mapping(source = "departureTime", target = "departureTime")
@@ -16,6 +17,7 @@ public interface FlightOptionMapper {
     @Mapping(source = "price", target = "price")
     FlightOptionDTO toDTO(FlightOptionEntity entity);
 
+    @Mapping(source = "id", target = "id")
     @Mapping(source = "origin", target = "origin")
     @Mapping(source = "destination", target = "destination")
     @Mapping(source = "departureTime", target = "departureTime")
